@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.smcommunity.mapper.TbTypecountMapper" >
+  <resultMap id="BaseResultMap" type="com.smcommunity.pojo.TbTypecount" >
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="food" property="food" jdbcType="DOUBLE" />
+    <result column="electronics" property="electronics" jdbcType="DOUBLE" />
+    <result column="everyday" property="everyday" jdbcType="DOUBLE" />
+    <result column="book" property="book" jdbcType="DOUBLE" />
+    <result column="clothing" property="clothing" jdbcType="DOUBLE" />
+    <result column="fresh" property="fresh" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    uid, food, electronics, everyday, book, clothing, fresh
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.smcommunity.pojo.TbTypecountExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_typecount
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.smcommunity.pojo.TbTypecountExample" >
+    delete from tb_typecount
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.smcommunity.pojo.TbTypecount" >
+    insert into tb_typecount (uid, food, electronics, 
+      everyday, book, clothing, 
+      fresh)
+    values (#{uid,jdbcType=INTEGER}, #{food,jdbcType=DOUBLE}, #{electronics,jdbcType=DOUBLE}, 
+      #{everyday,jdbcType=DOUBLE}, #{book,jdbcType=DOUBLE}, #{clothing,jdbcType=DOUBLE}, 
+      #{fresh,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.smcommunity.pojo.TbTypecount" >
+    insert into tb_typecount
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="food != null" >
+        food,
+      </if>
+      <if test="electronics != null" >
+        electronics,
+      </if>
+      <if test="everyday != null" >
+        everyday,
+      </if>
+      <if test="book != null" >
+        book,
+      </if>
+      <if test="clothing != null" >
+        clothing,
+      </if>
+      <if test="fresh != null" >
+        fresh,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="food != null" >
+        #{food,jdbcType=DOUBLE},
+      </if>
+      <if test="electronics != null" >
+        #{electronics,jdbcType=DOUBLE},
+      </if>
+      <if test="everyday != null" >
+        #{everyday,jdbcType=DOUBLE},
+      </if>
+      <if test="book != null" >
+        #{book,jdbcType=DOUBLE},
+      </if>
+      <if test="clothing != null" >
+        #{clothing,jdbcType=DOUBLE},
+      </if>
+      <if test="fresh != null" >
+        #{fresh,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.smcommunity.pojo.TbTypecountExample" resultType="java.lang.Integer" >
+    select count(*) from tb_typecount
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_typecount
+    <set >
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.food != null" >
+        food = #{record.food,jdbcType=DOUBLE},
+      </if>
+      <if test="record.electronics != null" >
+        electronics = #{record.electronics,jdbcType=DOUBLE},
+      </if>
+      <if test="record.everyday != null" >
+        everyday = #{record.everyday,jdbcType=DOUBLE},
+      </if>
+      <if test="record.book != null" >
+        book = #{record.book,jdbcType=DOUBLE},
+      </if>
+      <if test="record.clothing != null" >
+        clothing = #{record.clothing,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fresh != null" >
+        fresh = #{record.fresh,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_typecount
+    set uid = #{record.uid,jdbcType=INTEGER},
+      food = #{record.food,jdbcType=DOUBLE},
+      electronics = #{record.electronics,jdbcType=DOUBLE},
+      everyday = #{record.everyday,jdbcType=DOUBLE},
+      book = #{record.book,jdbcType=DOUBLE},
+      clothing = #{record.clothing,jdbcType=DOUBLE},
+      fresh = #{record.fresh,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select id="findTanZero" resultMap="BaseResultMap">
+  	select * from tb_typecount
+  	where 
+  </select>
+</mapper>

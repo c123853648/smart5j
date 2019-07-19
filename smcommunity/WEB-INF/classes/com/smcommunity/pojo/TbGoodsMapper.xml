@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.smcommunity.mapper.TbGoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.smcommunity.pojo.TbGoods" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="goodsname" property="goodsname" jdbcType="VARCHAR" />
+    <result column="goodsdescribe" property="goodsdescribe" jdbcType="VARCHAR" />
+    <result column="sellerid" property="sellerid" jdbcType="INTEGER" />
+    <result column="goodstype" property="goodstype" jdbcType="INTEGER" />
+    <result column="display" property="display" jdbcType="INTEGER" />
+    <result column="goodsimage" property="goodsimage" jdbcType="VARCHAR" />
+    <result column="tid" property="tid" jdbcType="INTEGER" />
+    <result column="tname" property="tname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, goodsname, goodsdescribe, sellerid, goodstype, display, goodsimage, tid, tname
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.smcommunity.pojo.TbGoodsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.smcommunity.pojo.TbGoodsExample" >
+    delete from tb_goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.smcommunity.pojo.TbGoods" >
+    insert into tb_goods (id, goodsname, goodsdescribe, 
+      sellerid, goodstype, display, 
+      goodsimage, tid, tname
+      )
+    values (#{id,jdbcType=INTEGER}, #{goodsname,jdbcType=VARCHAR}, #{goodsdescribe,jdbcType=VARCHAR}, 
+      #{sellerid,jdbcType=INTEGER}, #{goodstype,jdbcType=INTEGER}, #{display,jdbcType=INTEGER}, 
+      #{goodsimage,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER}, #{tname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.smcommunity.pojo.TbGoods" >
+    insert into tb_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodsname != null" >
+        goodsname,
+      </if>
+      <if test="goodsdescribe != null" >
+        goodsdescribe,
+      </if>
+      <if test="sellerid != null" >
+        sellerid,
+      </if>
+      <if test="goodstype != null" >
+        goodstype,
+      </if>
+      <if test="display != null" >
+        display,
+      </if>
+      <if test="goodsimage != null" >
+        goodsimage,
+      </if>
+      <if test="tid != null" >
+        tid,
+      </if>
+      <if test="tname != null" >
+        tname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodsname != null" >
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsdescribe != null" >
+        #{goodsdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerid != null" >
+        #{sellerid,jdbcType=INTEGER},
+      </if>
+      <if test="goodstype != null" >
+        #{goodstype,jdbcType=INTEGER},
+      </if>
+      <if test="display != null" >
+        #{display,jdbcType=INTEGER},
+      </if>
+      <if test="goodsimage != null" >
+        #{goodsimage,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="tname != null" >
+        #{tname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.smcommunity.pojo.TbGoodsExample" resultType="java.lang.Integer" >
+    select count(*) from tb_goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_goods
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsname != null" >
+        goodsname = #{record.goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsdescribe != null" >
+        goodsdescribe = #{record.goodsdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellerid != null" >
+        sellerid = #{record.sellerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodstype != null" >
+        goodstype = #{record.goodstype,jdbcType=INTEGER},
+      </if>
+      <if test="record.display != null" >
+        display = #{record.display,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsimage != null" >
+        goodsimage = #{record.goodsimage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tid != null" >
+        tid = #{record.tid,jdbcType=INTEGER},
+      </if>
+      <if test="record.tname != null" >
+        tname = #{record.tname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_goods
+    set id = #{record.id,jdbcType=INTEGER},
+      goodsname = #{record.goodsname,jdbcType=VARCHAR},
+      goodsdescribe = #{record.goodsdescribe,jdbcType=VARCHAR},
+      sellerid = #{record.sellerid,jdbcType=INTEGER},
+      goodstype = #{record.goodstype,jdbcType=INTEGER},
+      display = #{record.display,jdbcType=INTEGER},
+      goodsimage = #{record.goodsimage,jdbcType=VARCHAR},
+      tid = #{record.tid,jdbcType=INTEGER},
+      tname = #{record.tname,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.smcommunity.pojo.TbGoods" >
+    update tb_goods
+    <set >
+      <if test="goodsname != null" >
+        goodsname = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsdescribe != null" >
+        goodsdescribe = #{goodsdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerid != null" >
+        sellerid = #{sellerid,jdbcType=INTEGER},
+      </if>
+      <if test="goodstype != null" >
+        goodstype = #{goodstype,jdbcType=INTEGER},
+      </if>
+      <if test="display != null" >
+        display = #{display,jdbcType=INTEGER},
+      </if>
+      <if test="goodsimage != null" >
+        goodsimage = #{goodsimage,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null" >
+        tid = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="tname != null" >
+        tname = #{tname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.smcommunity.pojo.TbGoods" >
+    update tb_goods
+    set goodsname = #{goodsname,jdbcType=VARCHAR},
+      goodsdescribe = #{goodsdescribe,jdbcType=VARCHAR},
+      sellerid = #{sellerid,jdbcType=INTEGER},
+      goodstype = #{goodstype,jdbcType=INTEGER},
+      display = #{display,jdbcType=INTEGER},
+      goodsimage = #{goodsimage,jdbcType=VARCHAR},
+      tid = #{tid,jdbcType=INTEGER},
+      tname = #{tname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

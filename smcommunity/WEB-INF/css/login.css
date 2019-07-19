@@ -1,0 +1,16 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.loginOrRegister{
+	color: #69c9ff;
+}
+.loginOrRegister:last-child{
+	cursor: pointer;
+	text-decoration: underline;
+}
+.loginOrRegister:first-child{
+	padding-right: 2px;
+}

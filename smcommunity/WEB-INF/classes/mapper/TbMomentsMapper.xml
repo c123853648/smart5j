@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.smcommunity.mapper.TbMomentsMapper" >
+  <resultMap id="BaseResultMap" type="com.smcommunity.pojo.TbMoments" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="VARCHAR" />
+    <result column="loved" property="loved" jdbcType="VARCHAR" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+    <result column="newstype" property="newstype" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="headlogo" property="headlogo" jdbcType="VARCHAR" />
+    <result column="goodsimage" property="goodsimage" jdbcType="VARCHAR" />
+    <result column="goodsname" property="goodsname" jdbcType="VARCHAR" />
+    <result column="goodsdescribe" property="goodsdescribe" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="nums" property="nums" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, content, logo, uid, createtime, loved, comments, newstype
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.smcommunity.pojo.TbMomentsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_moments
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_moments
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_moments
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.smcommunity.pojo.TbMomentsExample" >
+    delete from tb_moments
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.smcommunity.pojo.TbMoments" >
+    insert into tb_moments (id, content, logo, 
+      uid, createtime, loved, 
+      comments, newstype)
+    values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
+      #{uid,jdbcType=INTEGER}, #{createtime,jdbcType=VARCHAR}, #{loved,jdbcType=VARCHAR}, 
+      #{comments,jdbcType=VARCHAR}, #{newstype,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.smcommunity.pojo.TbMoments" >
+    insert into tb_moments
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="loved != null" >
+        loved,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+      <if test="newstype != null" >
+        newstype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="loved != null" >
+        #{loved,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="newstype != null" >
+        #{newstype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.smcommunity.pojo.TbMomentsExample" resultType="java.lang.Integer" >
+    select count(*) from tb_moments
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_moments
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logo != null" >
+        logo = #{record.logo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null" >
+        createtime = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loved != null" >
+        loved = #{record.loved,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comments != null" >
+        comments = #{record.comments,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newstype != null" >
+        newstype = #{record.newstype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_moments
+    set id = #{record.id,jdbcType=INTEGER},
+      content = #{record.content,jdbcType=VARCHAR},
+      logo = #{record.logo,jdbcType=VARCHAR},
+      uid = #{record.uid,jdbcType=INTEGER},
+      createtime = #{record.createtime,jdbcType=VARCHAR},
+      loved = #{record.loved,jdbcType=VARCHAR},
+      comments = #{record.comments,jdbcType=VARCHAR},
+      newstype = #{record.newstype,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.smcommunity.pojo.TbMoments" >
+    update tb_moments
+    <set >
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="loved != null" >
+        loved = #{loved,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="newstype != null" >
+        newstype = #{newstype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.smcommunity.pojo.TbMoments" >
+    update tb_moments
+    set content = #{content,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=VARCHAR},
+      loved = #{loved,jdbcType=VARCHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      newstype = #{newstype,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="findBbs" resultMap="BaseResultMap">
+  	select * from (select a.`id`,'' content,'' logo,'' uid,1 `type`,a.createtime,'' loved,'' comments,'' nickname,'' headlogo ,a.goodsimage,a.goodsname,a.goodsdescribe
+	from tb_goods a where a.`goodstype`=1 
+	union all
+	SELECT a.`id`,'' content,'' logo,'' uid,1 `type`,a.createtime,'' loved,'' comments,'' nickname,'' headlogo ,a.goodsimage,a.goodsname,a.goodsdescribe
+		FROM tb_goods a WHERE a.`goodstype`=1 AND a.`isall`=0 
+		AND a.`tid` IN 
+		(SELECT c.`id` FROM tb_words c WHERE c.`tname`=
+		( SELECT b.`maxtname` FROM tb_recomuid b WHERE b.`uid`=#{uid,jdbcType=INTEGER}))
+		UNION ALL
+	select b.id,b.content,b.logo ,b.uid ,0 `type`,b.createtime,b.loved,b.comments,c.nickname,c.headlogo,'' goodsimage,'' goodsname,'' goodsdescribe
+	from tb_moments b,tb_users c where b.uid=c.id  and b.newstype= #{newstype,jdbcType=VARCHAR}) aa
+	ORDER BY aa.createtime desc
+  </select>
+  <select id="findBbsNoKey" resultMap="BaseResultMap">
+  		SELECT * FROM (SELECT a.`id`,'' content,'' logo,'' uid,1 `type`,a.createtime,'' loved,'' comments,'' nickname,'' headlogo ,a.goodsimage,a.goodsname,a.goodsdescribe
+		FROM tb_goods a WHERE a.`goodstype`=1 AND a.`isall`=1
+		UNION ALL
+		SELECT a.`id`,'' content,'' logo,'' uid,1 `type`,a.createtime,'' loved,'' comments,'' nickname,'' headlogo ,a.goodsimage,a.goodsname,a.goodsdescribe
+		FROM tb_goods a WHERE a.`goodstype`=1 AND a.`isall`=0 
+		AND a.`tid` IN 
+		(SELECT c.`id` FROM tb_words c WHERE c.`tname`=
+		( SELECT b.`maxtname` FROM tb_recomuid b WHERE b.`uid`=#{uid,jdbcType=INTEGER}))
+		UNION ALL
+		SELECT b.id,b.content,b.logo ,b.uid ,0 `type`,b.createtime,b.loved,b.comments,c.nickname,c.headlogo,'' goodsimage,'' goodsname,'' goodsdescribe
+		FROM tb_moments b,tb_users c WHERE b.uid=c.id  ) aa
+		ORDER BY aa.createtime DESC
+  </select>
+  <select id="findPages" resultMap="BaseResultMap">
+  	SELECT DATE_FORMAT(a.createtime,'%Y-%m-%d') createtime,COUNT(0) nums
+	FROM tb_moments a
+	<where>
+		<if test="key!=null">
+			a.`content` LIKE "%"#{key,jdbcType=VARCHAR}"%"
+		</if>
+		<if test="startdate!=null">
+			AND date_format(a.createtime,'%Y-%m-%d')>=#{startdate,jdbcType=VARCHAR}
+		</if>
+		<if test="startdate!=null">
+			AND date_format(a.createtime,'%Y-%m-%d') <![CDATA[<=]]>#{enddate,jdbcType=VARCHAR}
+		</if>
+	</where>
+	GROUP BY  DATE_FORMAT(a.createtime,'%Y-%m-%d')
+  </select>
+  <select id="findDetail" resultMap="BaseResultMap">
+  	SELECT a.content
+	FROM tb_moments a
+	<where>
+		<if test="key!=null">
+			a.`content` LIKE "%"#{key,jdbcType=VARCHAR}"%"
+		</if>
+		<if test="date!=null">
+			AND date_format(a.createtime,'%Y-%m-%d') =#{date,jdbcType=VARCHAR}
+		</if>
+	</where>
+  </select>
+    <select id="findType" resultMap="BaseResultMap">
+  	SELECT  newstype 
+	FROM tb_moments WHERE  uid = #{uid,jdbcType=INTEGER}
+	GROUP BY  newstype
+  </select>
+    <select id="findRand" resultMap="BaseResultMap">
+  	SELECT  * 
+	FROM tb_moments WHERE  uid != #{uid,jdbcType=INTEGER}
+	and newstype =#{newstype,jdbcType=VARCHAR}
+	order by rand() limit 1
+  </select>
+</mapper>
