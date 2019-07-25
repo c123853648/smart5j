@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jinandaxue.demo1.LoginActivity"
+    android:gravity="center_horizontal"
+    android:background="@drawable/beijing">
+
+    <LinearLayout
+        android:id="@+id/logo_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="46dp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#3F51B5"
+            android:text="智慧5家"
+            android:textSize="45sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#3F51B5"
+            android:text="基于ipv6的智能社区APP"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"/>
+    </LinearLayout>
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/logo_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+
+        android:hint="请输入账号"
+        android:drawablePadding="10dp"
+        android:background="@null"
+        />
+    <View
+        android:id="@+id/et_phone_bg"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#3F51B5"
+        android:layout_below="@+id/et_phone"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginTop="12dp"
+        />
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_below="@+id/et_phone_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+
+        android:hint="请输入密码"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="25dp"
+        android:password="true"
+        android:background="@null"/>
+    <View
+        android:id="@+id/et_password_bg"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#3F51B5"
+        android:layout_below="@+id/et_password"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginTop="12dp"
+        />
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignEnd="@+id/et_password_bg"
+        android:layout_alignLeft="@+id/et_password_bg"
+        android:layout_alignRight="@+id/et_password_bg"
+        android:layout_alignStart="@+id/et_password_bg"
+        android:layout_below="@+id/et_password_bg"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/my_bt_selector"
+        android:text="登录"
+        android:textColor="#FFFFFF" />
+    <Button
+        android:id="@+id/bt_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注册"
+        android:layout_below="@+id/bt_login"
+        android:layout_marginLeft="46dp"
+        android:layout_marginRight="46dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/my_bt_register_selector"
+        android:textColor="#3F51B5"/>
+
+</RelativeLayout>

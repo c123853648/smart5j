@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".MainActivity">
+<!--   />-->
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/view_bg"
+        >
+    </FrameLayout>
+
+    <View
+        android:id="@+id/view_bg"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D3D3D3"
+        android:layout_above="@+id/rg_home"/>
+
+    <RadioGroup
+        android:id="@+id/rg_home"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#fff"
+        android:clipChildren="false"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rb_bottom_home"
+            style="@style/bottom_style"
+            android:paddingTop="5dp"
+            android:text="首页"
+            android:textSize="11sp"
+            android:checked="false" />
+
+
+        <RadioButton
+            android:id="@+id/rb_bottom_info"
+            style="@style/bottom_style"
+            android:paddingTop="5dp"
+            android:text="小区通知"
+            android:textSize="11sp" />
+        <RadioButton
+            style="@style/bottom_style"
+            android:height="180dp"
+            android:id="@+id/tab_photo"
+            android:drawableTop="@mipmap/photo" />
+        <RadioButton
+            android:id="@+id/rb_bottom_community"
+            style="@style/bottom_style"
+            android:paddingTop="5dp"
+            android:text="社区论坛"
+            android:textSize="11sp" />
+        <RadioButton
+            android:id="@+id/rb_bottom_my"
+            style="@style/bottom_style"
+            android:paddingTop="5dp"
+            android:text="个人中心"
+            android:textSize="11sp" />
+
+    </RadioGroup>
+    <FrameLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:scaleType="fitXY"
+            android:src="@mipmap/photo2" />
+        <ImageView
+            android:id="@+id/Iv_home_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:scaleType="fitXY"
+            android:src="@mipmap/photo" />
+    </FrameLayout>
+</RelativeLayout>
